@@ -54,7 +54,11 @@ var manifest = [
     { id: "coin", src: "../../Assets/audio/coin.mp3" },
     { id: "jump", src: "../../Assets/audio/Jump.wav" },
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
-    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" }
+    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
+    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },
+    { id: "ControlsButton", src: "../../Assets/images/ControlsButton.png" },
+    { id: "Level2Button", src: "../../Assets/images/Level2Button.png" },
+    { id: "Level3Button", src: "../../Assets/images/Level3Button.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();
@@ -122,7 +126,7 @@ function setupRenderer() {
 }
 // Setup main camera for the scene
 function setupCamera() {
-    camera = new PerspectiveCamera(35, config.Screen.RATIO, 0.1, 200);
+    camera = new PerspectiveCamera(35, config.Screen.RATIO, 0.1, 400);
     camera.name = "Main Camera";
     console.log("Finished setting up Camera...");
 }

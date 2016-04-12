@@ -59,13 +59,14 @@ var scenes;
             this._youWinLabel.regX = this._youWinLabel.getMeasuredWidth() * 0.5;
             this._youWinLabel.regY = this._youWinLabel.getMeasuredLineHeight() * 0.5;
             this._youWinLabel.x = config.Screen.WIDTH * 0.5;
-            this._youWinLabel.y = config.Screen.HEIGHT * 0.5;
+            this._youWinLabel.y = (config.Screen.HEIGHT * 0.5) - 100;
             this._stage.addChild(this._youWinLabel);
+            //restart button
             this._restartButton = new createjs.Bitmap(assets.getResult("RestartButton"));
             this._restartButton.regX = this._restartButton.getBounds().width * 0.5;
             this._restartButton.regY = this._restartButton.getBounds().height * 0.5;
             this._restartButton.x = config.Screen.WIDTH * 0.5;
-            this._restartButton.y = (config.Screen.HEIGHT * 0.5) + 100;
+            this._restartButton.y = (config.Screen.HEIGHT * 0.5) + 25;
             this._stage.addChild(this._restartButton);
             this._restartButton.on("mouseover", function (event) {
                 event.target.alpha = 0.7;
@@ -75,6 +76,23 @@ var scenes;
             });
             this._restartButton.on("click", function (event) {
                 currentScene = config.Scene.PLAY;
+                changeScene();
+            });
+            //exit button
+            this._exitButton = new createjs.Bitmap(assets.getResult("ExitButton"));
+            this._exitButton.regX = this._exitButton.getBounds().width * 0.5;
+            this._exitButton.regY = this._exitButton.getBounds().height * 0.5;
+            this._exitButton.x = config.Screen.WIDTH * 0.5;
+            this._exitButton.y = (config.Screen.HEIGHT * 0.5) + 100;
+            this._stage.addChild(this._exitButton);
+            this._exitButton.on("mouseover", function (event) {
+                event.target.alpha = 0.7;
+            });
+            this._exitButton.on("mouseout", function (event) {
+                event.target.alpha = 1.0;
+            });
+            this._exitButton.on("click", function (event) {
+                currentScene = config.Scene.MENU;
                 changeScene();
             });
         };
