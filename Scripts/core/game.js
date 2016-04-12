@@ -41,9 +41,11 @@ var livesValue;
 var highScoreValue = 0;
 var play;
 var play2;
+var play3;
 var menu;
 var over;
 var winner;
+var controls;
 var stats;
 var canvas;
 var assets;
@@ -151,6 +153,12 @@ function changeScene() {
             scene = play2;
             console.log("Starting PLAY2 Scene");
             break;
+        case config.Scene.PLAY3:
+            // show the PLAY3 scene
+            play3 = new scenes.Play3();
+            scene = play3;
+            console.log("Starting PLAY3 Scene");
+            break;
         case config.Scene.OVER:
             // show the game OVER scene
             over = new scenes.Over();
@@ -158,10 +166,16 @@ function changeScene() {
             console.log("Starting OVER Scene");
             break;
         case config.Scene.WINNER:
-            // show the game OVER scene
+            // show the game WINNER scene
             winner = new scenes.Winner();
             scene = winner;
             console.log("Starting winner Scene");
+            break;
+        case config.Scene.CONTROLS:
+            // show the game CONTROLS scene
+            controls = new scenes.Controls();
+            scene = controls;
+            console.log("Starting controls Scene");
             break;
     }
 }

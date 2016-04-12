@@ -47,9 +47,11 @@ var highScoreValue: number = 0;
 
 var play: scenes.Play;
 var play2: scenes.Play2;
+var play3: scenes.Play3;
 var menu: scenes.Menu;
 var over: scenes.Over;
 var winner: scenes.Winner;
+var controls: scenes.Controls;
 
 var stats: Stats;
 var canvas: HTMLElement;
@@ -62,7 +64,7 @@ var manifest = [
     { id: "jump", src: "../../Assets/audio/Jump.wav" },
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
-    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },   
+    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },
     { id: "ControlsButton", src: "../../Assets/images/ControlsButton.png" },
     { id: "Level2Button", src: "../../Assets/images/Level2Button.png" },
     { id: "Level3Button", src: "../../Assets/images/Level3Button.png" }
@@ -178,6 +180,12 @@ function changeScene(): void {
             scene = play2;
             console.log("Starting PLAY2 Scene");
             break;
+        case config.Scene.PLAY3:
+            // show the PLAY3 scene
+            play3 = new scenes.Play3();
+            scene = play3;
+            console.log("Starting PLAY3 Scene");
+            break;
         case config.Scene.OVER:
             // show the game OVER scene
             over = new scenes.Over();
@@ -185,10 +193,16 @@ function changeScene(): void {
             console.log("Starting OVER Scene");
             break;
         case config.Scene.WINNER:
-            // show the game OVER scene
+            // show the game WINNER scene
             winner = new scenes.Winner();
             scene = winner;
             console.log("Starting winner Scene");
+            break;
+        case config.Scene.CONTROLS:
+            // show the game CONTROLS scene
+            controls = new scenes.Controls();
+            scene = controls;
+            console.log("Starting controls Scene");
             break;
     }
 }

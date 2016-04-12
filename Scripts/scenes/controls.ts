@@ -13,7 +13,7 @@ module scenes {
      * @param _gameLabel {createjs.Text}
      * @param _startButton {createjs.Bitmap}
      */
-    export class Menu extends scenes.Scene {
+    export class Controls extends scenes.Scene {
         private _blocker: HTMLElement;
         private _stage: createjs.Stage;
         private _gameLabel: createjs.Text;
@@ -72,7 +72,7 @@ module scenes {
          */
         public start(): void {
             this._gameLabel = new createjs.Text(
-                "THE FLOOR IS HOT LAVA",
+                "INSTRUCTIONS",
                 "80px Consolas",
                 "#ff0000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
@@ -99,69 +99,6 @@ module scenes {
 
             this._startButton.on("click", (event: createjs.MouseEvent) => {
                 currentScene = config.Scene.PLAY;
-                changeScene();
-            });
-            
-            //controls button
-            this._controlsButton = new createjs.Bitmap(assets.getResult("ControlsButton"));
-            this._controlsButton.regX = this._controlsButton.getBounds().width * 0.5;
-            this._controlsButton.regY = this._controlsButton.getBounds().height * 0.5;
-            this._controlsButton.x = config.Screen.WIDTH * 0.5;
-            this._controlsButton.y = (config.Screen.HEIGHT * 0.5) + 100;
-            this._stage.addChild(this._controlsButton);
-
-            this._controlsButton.on("mouseover", (event: createjs.MouseEvent) => {
-                event.target.alpha = 0.7;
-            });
-
-            this._controlsButton.on("mouseout", (event: createjs.MouseEvent) => {
-                event.target.alpha = 1.0;
-            });
-
-            this._controlsButton.on("click", (event: createjs.MouseEvent) => {
-                currentScene = config.Scene.CONTROLS;
-                changeScene();
-            });
-            
-            //level2 button
-            this._level2Button = new createjs.Bitmap(assets.getResult("Level2Button"));
-            this._level2Button.regX = this._level2Button.getBounds().width * 0.5;
-            this._level2Button.regY = this._level2Button.getBounds().height * 0.5;
-            this._level2Button.x = (config.Screen.WIDTH * 0.5) + 350;
-            this._level2Button.y = (config.Screen.HEIGHT * 0.5) + 250;
-            this._stage.addChild(this._level2Button);
-
-            this._level2Button.on("mouseover", (event: createjs.MouseEvent) => {
-                event.target.alpha = 0.7;
-            });
-
-            this._level2Button.on("mouseout", (event: createjs.MouseEvent) => {
-                event.target.alpha = 1.0;
-            });
-
-            this._level2Button.on("click", (event: createjs.MouseEvent) => {
-                currentScene = config.Scene.PLAY2;
-                changeScene();
-            });
-            
-            //level3 button
-            this._level3Button = new createjs.Bitmap(assets.getResult("Level3Button"));
-            this._level3Button.regX = this._level3Button.getBounds().width * 0.5;
-            this._level3Button.regY = this._level3Button.getBounds().height * 0.5;
-            this._level3Button.x = (config.Screen.WIDTH * 0.5) + 525;
-            this._level3Button.y = (config.Screen.HEIGHT * 0.5) + 250;
-            this._stage.addChild(this._level3Button);
-
-            this._level3Button.on("mouseover", (event: createjs.MouseEvent) => {
-                event.target.alpha = 0.7;
-            });
-
-            this._level3Button.on("mouseout", (event: createjs.MouseEvent) => {
-                event.target.alpha = 1.0;
-            });
-
-            this._level3Button.on("click", (event: createjs.MouseEvent) => {
-                currentScene = config.Scene.PLAY3;
                 changeScene();
             });
         }

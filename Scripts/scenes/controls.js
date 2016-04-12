@@ -19,20 +19,20 @@ var scenes;
      * @param _gameLabel {createjs.Text}
      * @param _startButton {createjs.Bitmap}
      */
-    var Menu = (function (_super) {
-        __extends(Menu, _super);
+    var Controls = (function (_super) {
+        __extends(Controls, _super);
         /**
          * Empty Constructor - calls _initialize and start methods
          *
          * @constructor
          */
-        function Menu() {
+        function Controls() {
             _super.call(this);
             this._initialize();
             this.start();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++
-        Menu.prototype._setupCanvas = function () {
+        Controls.prototype._setupCanvas = function () {
             canvas.style.width = "100%";
             canvas.setAttribute("height", config.Screen.HEIGHT.toString());
             canvas.style.backgroundColor = "#000000";
@@ -44,7 +44,7 @@ var scenes;
          * @method _initialize
          * @return void
          */
-        Menu.prototype._initialize = function () {
+        Controls.prototype._initialize = function () {
             // Create to HTMLElements
             this._blocker = document.getElementById("blocker");
             this._blocker.style.display = "none";
@@ -61,8 +61,8 @@ var scenes;
          * @method start
          * @return void
          */
-        Menu.prototype.start = function () {
-            this._gameLabel = new createjs.Text("THE FLOOR IS HOT LAVA", "80px Consolas", "#ff0000");
+        Controls.prototype.start = function () {
+            this._gameLabel = new createjs.Text("INSTRUCTIONS", "80px Consolas", "#ff0000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
             this._gameLabel.regY = this._gameLabel.getMeasuredLineHeight() * 0.5;
             this._gameLabel.x = config.Screen.WIDTH * 0.5;
@@ -85,57 +85,6 @@ var scenes;
                 currentScene = config.Scene.PLAY;
                 changeScene();
             });
-            //controls button
-            this._controlsButton = new createjs.Bitmap(assets.getResult("ControlsButton"));
-            this._controlsButton.regX = this._controlsButton.getBounds().width * 0.5;
-            this._controlsButton.regY = this._controlsButton.getBounds().height * 0.5;
-            this._controlsButton.x = config.Screen.WIDTH * 0.5;
-            this._controlsButton.y = (config.Screen.HEIGHT * 0.5) + 100;
-            this._stage.addChild(this._controlsButton);
-            this._controlsButton.on("mouseover", function (event) {
-                event.target.alpha = 0.7;
-            });
-            this._controlsButton.on("mouseout", function (event) {
-                event.target.alpha = 1.0;
-            });
-            this._controlsButton.on("click", function (event) {
-                currentScene = config.Scene.CONTROLS;
-                changeScene();
-            });
-            //level2 button
-            this._level2Button = new createjs.Bitmap(assets.getResult("Level2Button"));
-            this._level2Button.regX = this._level2Button.getBounds().width * 0.5;
-            this._level2Button.regY = this._level2Button.getBounds().height * 0.5;
-            this._level2Button.x = (config.Screen.WIDTH * 0.5) + 350;
-            this._level2Button.y = (config.Screen.HEIGHT * 0.5) + 250;
-            this._stage.addChild(this._level2Button);
-            this._level2Button.on("mouseover", function (event) {
-                event.target.alpha = 0.7;
-            });
-            this._level2Button.on("mouseout", function (event) {
-                event.target.alpha = 1.0;
-            });
-            this._level2Button.on("click", function (event) {
-                currentScene = config.Scene.PLAY2;
-                changeScene();
-            });
-            //level3 button
-            this._level3Button = new createjs.Bitmap(assets.getResult("Level3Button"));
-            this._level3Button.regX = this._level3Button.getBounds().width * 0.5;
-            this._level3Button.regY = this._level3Button.getBounds().height * 0.5;
-            this._level3Button.x = (config.Screen.WIDTH * 0.5) + 525;
-            this._level3Button.y = (config.Screen.HEIGHT * 0.5) + 250;
-            this._stage.addChild(this._level3Button);
-            this._level3Button.on("mouseover", function (event) {
-                event.target.alpha = 0.7;
-            });
-            this._level3Button.on("mouseout", function (event) {
-                event.target.alpha = 1.0;
-            });
-            this._level3Button.on("click", function (event) {
-                currentScene = config.Scene.PLAY3;
-                changeScene();
-            });
         };
         /**
          * The update method updates the animation loop and other objects
@@ -143,7 +92,7 @@ var scenes;
          * @method update
          * @return void
          */
-        Menu.prototype.update = function () {
+        Controls.prototype.update = function () {
             this._stage.update();
         };
         /**
@@ -152,12 +101,12 @@ var scenes;
          * @method resize
          * @return void
          */
-        Menu.prototype.resize = function () {
+        Controls.prototype.resize = function () {
             this._setupCanvas();
         };
-        return Menu;
+        return Controls;
     }(scenes.Scene));
-    scenes.Menu = Menu;
+    scenes.Controls = Controls;
 })(scenes || (scenes = {}));
 
-//# sourceMappingURL=menu.js.map
+//# sourceMappingURL=controls.js.map
